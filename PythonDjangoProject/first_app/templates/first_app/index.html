@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "first_app/base.html"%}
+{% load my_filters %}
+{% block body_block %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage | Musician App</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'images/image.png' %}" alt="Musician App Logo" class="logo">
+        <h1>{{ text_1 }}</h1>
+        <h3>{{ sample_text|custom_filter}}</h3>
+    </header>
+
+    <nav >
+        <ul>
+            <li><a href="">Add New Musician</a></li>
+        </ul>
+    </nav>
+
+<h3>List of Musicians:</h3>
+    <ul>
+        {% if musician_list %}
+        {% for musician in musician_list %}
+        <li><a href="{% url 'first_app:album_list' artist_id=musician.id %}">{{ musician.first_name }} {{ musician.last_name }}</a></li>
+        {% endfor %}
+        <h4>No Musician in the list</h4>
+        {% endif %}
+    </ul>
+
+    <footer>
+        <p>&copy; 2024 Musician App. All rights reserved.</p>
+    </footer>
+</body>
+{% endblock %}
+</html>

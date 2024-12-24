@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <!-- Corrected the href attribute -->
+        <a class="navbar-brand bg-dark" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'Login_app:index' %}">Home</a>
+            {% if user.is_authenticated %}
+            </li>
+                 <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'Login_app:logout' %}">Logout</a>
+             </li>
+            {% else %}
+            </li>
+                 <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'Login_app:register' %}">Register</a>
+            </li>
+              </li>
+                 <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'Login_app:login' %}">Login</a>
+            </li>
+            {% endif %}
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Placeholder for additional content -->
+    <div class="container" style="padding: 20px">
+        {% block body_block %}
+    {% endblock %}
+    </div>
+
+  </body>
+</html>

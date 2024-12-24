@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "first_app/base.html"%}
+{% block body_block %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage of First App</title>
+
+
+</head>
+<body>
+<h3>{{ heading_1 }}</h3>
+<form action="" method="POST">
+    {{ test_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" name="submit" value="submit">
+</form>
+<hr>
+
+{#    {% if form_submitted %}#}
+{#        <p>Name:{{ user_name }}</p>#}
+{#        <p>Date of Birth:{{ user_dob }}</p>#}
+{#        <p>Email:{{ user_email }}</p>#}
+{#        <p> Boolean: {{ boolean_field }}</p>#}
+{#        <p>Field:{{ field }}</p>#}
+{#         <p>Field:{{ choice }}</p>#}
+{#    {% endif %}#}
+</body>
+</html>
+{% endblock %}
